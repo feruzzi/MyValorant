@@ -64,11 +64,11 @@
               </div>
               <div class="text-center py-5">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="daily-mission" name="daily-mission" value="0">
+                    <input class="form-check-input" type="checkbox" id="daily-mission" name="daily-mission" value="4000">
                     <label class="form-check-label" for="daily-mission">Daily Mission Complete</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="weekly-mission" name="weekly-mission" value="1">
+                    <input class="form-check-input" type="checkbox" id="weekly-mission" name="weekly-mission" value="324000">
                     <label class="form-check-label" for="weekly-mission">Weekly Mission Complete</label>
                   </div>
                   <div class="py-3">

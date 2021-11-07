@@ -7,13 +7,20 @@
 </section>
 <section class="tracker-section" id="tracker">
     <h1 class="text-center py-5">Valorant Tracker</h1>
-    <form action="">
+    @if(session()->has('message'))
+            <div class="container col-sm-6 text-center alert my-alert alert-dismissible fade show" role="alert">
+                {{session('message')}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+    @endif
+    <form action="/tracker" method="post">
+        @csrf
         <div class="row d-flex justify-content-center">
             <div class="col-sm-3">
-                <input type="text" placeholder="Username">
+                <input type="text" placeholder="Username" name="username" id="username" required>
             </div>
             <div class="col-sm-3">
-                <input type="text" placeholder="Tagline">
+                <input type="text" placeholder="Tagline" name="tagline" id="tagline" required>
             </div>
         </div>
         <div class="text-center p-5">
@@ -28,7 +35,7 @@
         <div class="row">
           @foreach($data as $agent)
           <div class="col align-self-start my-2">
-            <a href="#" class="agent-name">
+            <a href="/detail-agent/{{$agent['uuid']}}" class="agent-name">
               <div class="card bg-blackx border border-danger border-2 zoom" style="width: 8rem;">
                   <img src="{{$agent['displayIconSmall']}}" class="card-img-top p-4" alt="{{$agent['displayName']}}">
                   <div class="card-body">

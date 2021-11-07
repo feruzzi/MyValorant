@@ -16,6 +16,7 @@
       });
       </script>
     <script src="{{asset('assets/js/result.js')}}"></script>
+    <script src="{{asset('assets/js/detail-agent.js')}}"></script>
     <link href="{{asset('assets/css/styles.css')}}" rel="stylesheet" />
     <title>MyValorant | @yield('title')</title>
 </head>
@@ -59,6 +60,18 @@
                   {{-- <li><a class="dropdown-item" href="#">Agents</a></li> --}}
                 </ul>
               </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Articles
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  {{-- <li><a class="dropdown-item" href="/articles/ ">All</a></li> --}}
+                  <li><a class="dropdown-item" href="/articles/announcements">Announcements</a></li>                  
+                  <li><a class="dropdown-item" href="/articles/game_updates">Game Updates</a></li>
+                  <li><a class="dropdown-item" href="/articles/esports">Esports</a></li>
+                  <li><a class="dropdown-item" href="/articles/dev">Dev</a></li>
+                </ul>
+              </li>     
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Simulations
