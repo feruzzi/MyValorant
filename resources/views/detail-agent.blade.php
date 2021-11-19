@@ -5,18 +5,18 @@
 <section class="agents-section" id="agent">
     <h1 class="text-center py-5">Agents</h1>
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-start">
           @foreach($data as $agents)
-          <div class="col align-self-start my-2">
-            <a href="#detail-agent" data-value="{{$agents['uuid']}}" class="agent-name uuid">
-                {{-- <input type="hidden" value="{{$agents['uuid']}}"> --}}
+          <div class="col-auto my-2">
+              {{-- <input type="hidden" value="{{$agents['uuid']}}"> --}}
               <div class="card bg-blackx border border-danger border-2 zoom" style="width: 8rem;">
+                <a href="#detail-agent" data-value="{{$agents['uuid']}}" class="agent-name uuid">
                   <img src="{{$agents['displayIconSmall']}}" class="card-img-top p-4" alt="{{$agents['displayName']}}">
                   <div class="card-body">
                     <p class="card-text text-center">{{$agents['displayName']}}</p>
                   </div>
+                </a>
                 </div>
-            </a>
           </div>
           @endforeach
         </div>

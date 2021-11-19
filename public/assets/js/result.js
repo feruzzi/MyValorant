@@ -11,8 +11,21 @@ $(document).on('click','.submit',function(){
         var currentDate = $('#current-date').val();
         var endDate = $('#end-date').val();
         averageXP = $('#average-xp').val();
-        dailyXP = $('#daily-mission').val();
-        weeklyXP = $('#weekly-mission').val();
+        if ($('#daily-mission').is(":checked"))
+            {
+            // it is checked
+            dailyXP = $('#daily-mission').val();
+            } else{
+                dailyXP=0;
+            }
+            if ($('#weekly-mission').is(":checked"))
+            {
+            // it is checked
+            weeklyXP = $('#weekly-mission').val();
+            } else{
+                weeklyXP=0;
+            }
+        // weeklyXP = $('#weekly-mission').val();
         // var cal = $('#current-xp').val();
         // cal = Number(cal);
         // $.ajaxSetup({

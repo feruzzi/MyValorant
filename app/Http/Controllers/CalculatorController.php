@@ -8,55 +8,56 @@ use Illuminate\Http\Request;
 
 class CalculatorController extends Controller
 {
-    public function calculator()
-    {
-        return view('calculator', [
-            'title' => "BPCalculator",
-        ]);
+  public function calculator()
+  {
+    return view('calculator', [
+      'title' => "BPCalculator",
+    ]);
+  }
+  public function calculate()
+  {
+    // $cal = (int) $cal;
+    // $weeklyXP = 0;
+    $currentXP = $_POST['currentXP'];
+    $currentTier = $_POST['currentTier'];
+    $targetTier = $_POST['targetTier'];
+    $currentDate = $_POST['currentDate'];
+    $endDate = $_POST['endDate'];
+    $averageXP = $_POST['averageXP'];
+    $dailyXP = $_POST['dailyXP'];
+    $weeklyXP = $_POST['weeklyXP'];
+    // dd($weeklyXP);
+    $currentDate = new DateTime($currentDate);
+    $endDate = new DateTime($endDate);
+    $dateDiff = $currentDate->diff($endDate);
+    $dateCount = $dateDiff->format('%a');
+    $xpNeed = 0 - ($currentXP + ($dailyXP * $dateCount) + ($weeklyXP));
+    $xpNeeded = 0;
+    $j = $currentTier;
+    for ($j; $j <= $targetTier; $j++) {
+      $xpNeed = (($j * 750) + 500) + $xpNeed;
+      $xpNeeded = (($j * 750) + 500) + $xpNeeded;
     }
-    public function calculate()
-    {
-        // $cal = (int) $cal;
-        $currentXP = $_POST['currentXP'];
-        $currentTier = $_POST['currentTier'];
-        $targetTier = $_POST['targetTier'];
-        $currentDate = $_POST['currentDate'];
-        $endDate = $_POST['endDate'];
-        $averageXP = $_POST['averageXP'];
-        $dailyXP = $_POST['dailyXP'];
-        $weeklyXP = $_POST['weeklyXP'];
-        // dd($cal);        
-        $currentDate = new DateTime($currentDate);
-        $endDate = new DateTime($endDate);
-        $dateDiff = $currentDate->diff($endDate);
-        $dateCount = $dateDiff->format('%a');
-        $xpNeed = 0 - ($currentXP + ($dailyXP * $dateCount) + ($weeklyXP));
-        $xpNeeded = 0;
-        $j = $currentTier;
-        for ($j; $j <= $targetTier; $j++) {
-            $xpNeed = (($j * 750) + 500) + $xpNeed;
-            $xpNeeded = (($j * 750) + 500) + $xpNeeded;
-        }
-        $xpTotal = 0;
-        for ($i = 2; $i <= $currentTier; $i++) {
-            $xpTotal = (($i * 750) + 500) + $xpTotal;
-        }
-        $totalNeed = 0;
-        for ($k = 2; $k <= $targetTier; $k++) {
-            $totalNeed = (($k * 750) + 500) + $totalNeed;
-        }
-        $xpDm = 900;
-        $xpRepli = 1700;
-        $xpSpike = 1000;
-        $playComp = max(round($xpNeed / ($averageXP)), 0);
-        $playDm = max(round($xpNeed / ($xpDm)), 0);
-        $playSpike = max(round($xpNeed / ($xpSpike)), 0);
-        $playRepli = max(round($xpNeed / ($xpRepli)), 0);
-        $timeComp = $playComp * 2400;
-        $timeDm = $playDm * 300;
-        $timeSpike = $playSpike * 600;
-        $timeRepli = $playRepli * 1500;
-        echo '<div class="card">
+    $xpTotal = 0;
+    for ($i = 2; $i <= $currentTier; $i++) {
+      $xpTotal = (($i * 750) + 500) + $xpTotal;
+    }
+    $totalNeed = 0;
+    for ($k = 2; $k <= $targetTier; $k++) {
+      $totalNeed = (($k * 750) + 500) + $totalNeed;
+    }
+    $xpDm = 900;
+    $xpRepli = 1700;
+    $xpSpike = 1000;
+    $playComp = max(round($xpNeed / ($averageXP)), 0);
+    $playDm = max(round($xpNeed / ($xpDm)), 0);
+    $playSpike = max(round($xpNeed / ($xpSpike)), 0);
+    $playRepli = max(round($xpNeed / ($xpRepli)), 0);
+    $timeComp = $playComp * 2400;
+    $timeDm = $playDm * 300;
+    $timeSpike = $playSpike * 600;
+    $timeRepli = $playRepli * 1500;
+    echo '<div class="card">
         <div class="card-body result-form">
           <h1 class="text-center py-3">Result</h1>
           <div class="progress">
@@ -107,5 +108,5 @@ class CalculatorController extends Controller
           </div>
         </div>
       </div>';
-    }
+  }
 }
